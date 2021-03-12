@@ -15,6 +15,7 @@ COPY package.json .
 #     npm config set https-proxy=http://127.0.0.1:3128/
 RUN rm -rf node_modules
 RUN npm install -g npm@latest
+RUN npm install --save react react-dom react-scripts
 COPY . .
 
 CMD ["npm", "run", "start"]
