@@ -1,0 +1,19 @@
+# FROM node:argon
+FROM node:alpine
+
+# ENV http_proxy http://127.0.0.1:3128/
+# ENV https_proxy http://127.0.0.1:3128/
+
+# RUN mkdir -p /app
+WORKDIR '/app'
+COPY package.json .
+# setup proxies
+# RUN git config --global http.proxy http://127.0.0.1:3128/ && \
+#     npm config set strict-ssl=false \
+#     npm config set registry=http://registry.npmjs.org/ \
+#     npm config set proxy=http://127.0.0.1:3128/ && \
+#     npm config set https-proxy=http://127.0.0.1:3128/
+RUN npm install -g npm@7.6.2
+COPY . .
+
+CMD ["npm", "run", "start"]
