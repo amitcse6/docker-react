@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t amitmondol/docker-react -f Dockerfile.dev .
+
+scripts:
+    - docker run amitmondol/docker-react npm run test -- --coverage
